@@ -7,24 +7,25 @@ import { motion } from 'framer-motion';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/system';
 import ActionButton from '../components/ActionButton';
-import Footer from '../components/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faForumbee, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import { faCoins, faHandPaper, faMoneyBill, faNewspaper } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faCheckDouble, faCoins, faHandPaper, faMoneyBill, faNewspaper, faPen, faSmileBeam } from '@fortawesome/free-solid-svg-icons';
 
 const CustomTextField = styled(TextField)`
     & label.Mui-focused {
-        color: #DC5F00;
+        color: var(--secondary-color);
     }
     & .MuiOutlinedInput-root {
         &.Mui-focused fieldset {
-        border-color: #DC5F00;
+            border-color: var(--secondary-color);
         }
     }
     & .MuiFormLabel-root {
-        font-size: 1.25rem;
+        font-size: 1rem;
     }
 `;
+
+const texts = ["bevan slabbert", "full-stack developer", "technical consultant", "software engineer"];
 
 const Enquire: React.FC<any> = (props: any) => {
     const location = useLocation();
@@ -107,9 +108,8 @@ const Enquire: React.FC<any> = (props: any) => {
 
     const [ref, inView] = useInView({ threshold: 0.1 });
     return (
-       
         <div className='enquire-container'>
-            <Header navBack={true}/>
+            <Header texts={texts} navBack={true}/>
             <div className='enquire-main large-padding-bottom'>
                 <motion.div
                     ref={ref}
@@ -120,34 +120,31 @@ const Enquire: React.FC<any> = (props: any) => {
                     <div className='enquire-card'>
                         <div className='enquire-form medium-padding-left medium-padding-right medium-padding-bottom'>
                             <p className="tickbox-card-heading">Sign Up</p>
-                            <CustomTextField id="outlined-basic" value={name} onChange={handleNameChange} helperText={nameErrorText} error={nameError} autoFocus required label="Name" variant="outlined" inputProps={{style: {fontSize: "1.25rem"}}} sx={{ mb: "2rem"}} size="medium" fullWidth={true}/>
-                            <CustomTextField id="outlined-basic" value={surname} onChange={handleSurnameChange} helperText={surnameErrorText} error={surnameError} required label="Surname" variant="outlined" inputProps={{style: {fontSize: "1.25rem"}}} sx={{ mb: "2rem" }} size="medium" fullWidth={true}/>
-                            <CustomTextField id="outlined-basic" value={email} onChange={handleEmailChange} helperText={emailErrorText} error={emailError} required label="Email" variant="outlined" inputProps={{style: {fontSize: "1.25rem"}}} sx={{ mb: "2rem" }} size="medium" fullWidth={true}/>
+                            <CustomTextField id="outlined-basic" value={name} onChange={handleNameChange} helperText={nameErrorText} error={nameError} autoFocus required label="Name" variant="outlined" inputProps={{style: {fontSize: "0.9rem"}}} sx={{ mb: "2rem"}} size="medium" fullWidth={true}/>
+                            <CustomTextField id="outlined-basic" value={surname} onChange={handleSurnameChange} helperText={surnameErrorText} error={surnameError} required label="Surname" variant="outlined" inputProps={{style: {fontSize: "0.9rem"}}} sx={{ mb: "2rem" }} size="medium" fullWidth={true}/>
+                            <CustomTextField id="outlined-basic" value={email} onChange={handleEmailChange} helperText={emailErrorText} error={emailError} required label="Email" variant="outlined" inputProps={{style: {fontSize: "0.9rem"}}} sx={{ mb: "2rem" }} size="medium" fullWidth={true}/>
                             {/* <CustomTextField id="outlined-basic" value={phone} onChange={handlePhoneChange} helperText={phoneErrorText} error={phoneError} required label="Phone Number" variant="outlined" inputProps={{style: {fontSize: "0.8rem"}}} sx={{ mb: "2rem" }} size="small" fullWidth={true}/> */}
-                            <CustomTextField id="outlined-basic" multiline rows={4} value={message} onChange={handleMessageChange} label="Message" variant="outlined" inputProps={{style: {fontSize: "1rem"}}} sx={{ mb: "2rem" }} size="medium" fullWidth={true}/>
+                            <CustomTextField id="outlined-basic" multiline rows={4} value={message} onChange={handleMessageChange} label="Message" variant="outlined" inputProps={{style: {fontSize: "1rem"}}} sx={{ mb: "0.9rem" }} size="medium" fullWidth={true}/>
                             <div className="medium-margin-top">
                                 <ActionButton text="Submit" />
                             </div>
                         </div>
                         <div className='enquire-card-info'>
-                            <h1 className='enquire-card-info-heading'>Next steps</h1>
+                            <h1 className='enquire-card-info-heading'>Get in touch</h1>
                             <div className='enquire-steps'>
                                 <div className='enquire-step'>
-                                    <FontAwesomeIcon fontSize="3rem" icon={faHandPaper} className='small-margin-right'/><p>Fill in this form to begin your fitness journey at Limit Breaker Strength.</p>
+                                    <FontAwesomeIcon fontSize="1.5rem" icon={faPen} className='small-margin-right'/><p>Fill in this form</p>
                                 </div>
                                 <div className='enquire-step'>
-                                    <FontAwesomeIcon fontSize="3rem" icon={faCoins} className='small-margin-right'/><p>You will receive an email detailing payment information.</p>
+                                    <FontAwesomeIcon fontSize="1.5rem" icon={faCheckCircle} className='small-margin-right'/><p>Click submit to send me an email</p>
                                 </div>
                                 <div className='enquire-step'>
-                                    <FontAwesomeIcon fontSize="3rem" icon={faWhatsapp} className='small-margin-right'/><p>Upon completing payment, one of our coaches will be in contact with you via WhatsApp as soon as possible.</p>
+                                    <FontAwesomeIcon fontSize="1.5rem" icon={faSmileBeam} className='small-margin-right'/><p>Thank you for your time</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </motion.div>
-            </div>
-            <div className='enquire-footer-container'>
-                <Footer/>
             </div>
         </div>
         

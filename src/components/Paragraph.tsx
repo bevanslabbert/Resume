@@ -17,7 +17,7 @@ const Paragraph: React.FC<ParagraphProps> = (props: ParagraphProps) => {
             animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 50 }}
             transition={{ duration: 0.5 }}
         >
-            <p className='large-padding-left large-padding-right large-padding-top'>{props.text}</p>
+            <p className='sub-text'>{props.text}</p>
         </motion.div>
     );
 };

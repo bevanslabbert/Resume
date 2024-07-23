@@ -10,18 +10,21 @@ const ActionButton: React.FC<ButtonProps> = ( props : ButtonProps ) => {
     return (
         <Button variant='contained' sx={
             {
-                backgroundColor: '#DC5F00',
+                backgroundColor: 'transparent',
+                color: "var(--secondary-color)",
                 borderRadius: '10px',
+                border: "1px solid var(--secondary-color)",
                 fontWeight: 'bold',
-                color: '#FFFFFF',
                 width: '30%',
                 margin: 'auto',
+                boxShadow: "none",
                 '&:active': {
                     backgroundColor: '#EEEEEE',
                 },
                 '&:hover': {
-                    backgroundColor: '#EEEEEE',
-                    color: "#DC5F00"
+                    backgroundColor: 'var(--secondary-color)',
+                    color: '#FFFFFF',
+                    boxShadow: "none"
                 },
             }
         }>{props.text}</Button>

@@ -7,12 +7,14 @@ import MenuItem from '@mui/material/MenuItem';
 import { Button, SxProps } from '@mui/material';
 import { Theme } from '@mui/material';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Typewriter from './Typewriter';
 
 interface HeaderProps {
     navBack: boolean;
     whatWeOfferNav?: Function;
     packagesNav?: Function;
     faqsNav?: Function;
+    texts?: string[];
 }
 
 const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
@@ -73,28 +75,35 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
         fontWeight: 'bold',
         color: '#686D76',
         width: 'auto',
+        textAlign: 'left',
+        justifyContent: 'left',
         marginRight: "2rem",
         '&:active': {
             color: "#FFFFFF"
         },
         '&:hover': {
-            color: "#DC5F00"
-        }
+            color: "var(--font-color)",
+            backgroundColor: "transparent"
+        },
+        textTransform: 'lowercase'
     };
 
     const actionButtonSx: SxProps<Theme> = {
         fontWeight: 'bold',
-        color: '#FFFFFF',
-        backgroundColor: '#DC5F00',
+        color: "var(--font-color)",
+        backgroundColor: "var(--background-color)",
         width: 'auto',
-        marginRight: '2rem',
         '&:active': {
-            color: "#FFFFFF"
+            color: "#E6E4DF"
         },
         '&:hover': {
-            color: "white",
-            backgroundColor: "#DC5F00"
-        }
+            color: "var(--background-color)",
+            backgroundColor: "var(--font-color)",
+            boxShadow: "none",
+        },
+        boxShadow: "none",
+
+        textTransform: 'lowercase'
     };
 
 
@@ -129,16 +138,14 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
                         </div>
                         <div className='nav-back-logo' >
                         <Button sx={buttonSx} onClick={handleHome}>
-                            <FontAwesomeIcon color="#DC5F00" className="tiny-margin-right tiny-margin-left" fontSize='2em' height='100%' icon={faDumbbell}/>
-                            <p>Limit Breaker Strength</p>
+                            <Typewriter texts={props.texts ? props.texts : []} />
                         </Button>
                         </div>
                     </div>
                 ) :
                 (
                      <Button sx={buttonSx} className='logo-container'>
-                        <FontAwesomeIcon color="#DC5F00" className="tiny-margin-right tiny-margin-left" fontSize='2em' height='100%' icon={faDumbbell}/>
-                        <p>Limit Breaker Strength</p>
+                        <Typewriter texts={props.texts ? props.texts : []} />
                     </Button>
                 )
             }
@@ -184,19 +191,19 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
                     location.pathname !== "/" ? <Button sx={buttonSx} variant="text" onClick={handleHome}>Home</Button> : null
                 }
                 {
-                    location.pathname === "/" ?  <Button variant="text" sx={buttonSx} onClick={handleWhatWeOffer}>What we offer</Button> : null
+                    location.pathname === "/" ?  <Button variant="text" sx={buttonSx} onClick={handleWhatWeOffer}>Skills</Button> : null
                 }
                 {
-                    location.pathname === "/" ?  <Button variant="text" sx={buttonSx} onClick={handlePackages}>Packages</Button> : null
+                    location.pathname === "/" ?  <Button variant="text" sx={buttonSx} onClick={handlePackages}>Education</Button> : null
                 }
                 {
-                    location.pathname === "/" ?   <Button variant="text" sx={buttonSx} onClick={handleFaqs}>FAQ's</Button> : null
+                    location.pathname === "/" ?   <Button variant="text" sx={buttonSx} onClick={handleFaqs}>Experience</Button> : null
                 }
                
                 {/* <Link to={"enquire"} replace={true}> */}
                 {
                     location.pathname === "/" ? (
-                        <Button variant="contained" sx={actionButtonSx} onClick={handleSignUp}><FontAwesomeIcon className='tiny-margin-right' icon={faCheckCircle} />Sign Up</Button>
+                        <Button variant="contained" sx={actionButtonSx} onClick={handleSignUp}><FontAwesomeIcon className='tiny-margin-right' icon={faCheckCircle} />Contact Me</Button>
                     ) : null
                 }
                 {/* </Link> */}

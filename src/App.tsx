@@ -6,11 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react"
 
 // Pages
 import Home from './pages/Home'
-import CoachingAndNutritionPackage from './pages/Packages/CoachingAndNutritionPackage';
-import CoachingPackage from './pages/Packages/CoachingPackage';
-import NutritionPackage from './pages/Packages/NutritionPackage';
 import Enquire from './pages/Enquire';
-
 
 // Define a custom theme to use breakpoints
 const theme = createTheme();
@@ -44,9 +40,6 @@ function App() {
           <Routes>
             <Route>
               <Route path="/" element={<Home accordionSx={accordionSx}/>} />
-              <Route path="coaching-and-nutrition" element={<CoachingAndNutritionPackage />} />
-              <Route path="coaching" element={<CoachingPackage/>} />
-              <Route path="nutrition" element={<NutritionPackage />} />
               <Route path="enquire" element={<Enquire />} />
               <Route path="nutrition/enquire" element={<Enquire />} />
               <Route path="coaching/enquire" element={<Enquire />} />

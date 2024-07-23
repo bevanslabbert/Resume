@@ -16,7 +16,7 @@ const Heading: React.FC<HeadingProps> = ( props : HeadingProps ) => {
                 transition={{ duration: 0.5 }}
             >
                 <div className="heading">
-                    <h1>{props.text}</h1>
+                    <p>{props.text}</p>
                 </div>
             </motion.div>
     );

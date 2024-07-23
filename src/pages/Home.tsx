@@ -5,35 +5,20 @@ import BackgroundImage from '../components/BackgroundImage';
 import bench from "../common/images/image.jpg";
 import Heading from '../components/Heading';
 import Paragraph from '../components/Paragraph';
-import InfoCard from '../components/InfoCard';
-import GraphicCard from '../components/GraphicCard';
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { faCss3, faHtml5, faJs, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { faBowlFood, faCarrot, faCheckDouble, faClock, faDumbbell, faPlus, faTableCells, faVideo, faWeight } from '@fortawesome/free-solid-svg-icons';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Typography from '@mui/material/Typography';
-import Footer from '../components/Footer';
 import WhiteHeading from '../components/WhiteHeading';
 import Package from '../components/Package';
+import profile from '../common/images/profile.png';
 
 interface HomeProps {
     accordionSx: any;
 }
-
-// const accordionSx = {
-//     backgroundColor: 'black',
-//     color: 'white',
-//     // borderBottom: '0.1px solid white',
-//     // borderRadius: '0px',
-//     paddingBottom: '1rem',
-//     paddingTop: '1rem',
-//     transition: 'transform 0.1s ease-in-out',
-//     '&:hover': {
-//         transform: 'translateX(10px)',
-//     }
-// }
 
 const faq = [
     {
@@ -66,6 +51,8 @@ const faq = [
     }
 ]
 
+const texts = ["bevan slabbert", "full-stack developer", "technical consultant", "software engineer"];
+
 const Home: React.FC<HomeProps> = ({ accordionSx }) => {
     const whatWeOfferDivRef = useRef<HTMLDivElement>(null);
     const packagesDivRef = useRef<HTMLDivElement>(null);
@@ -86,32 +73,25 @@ const Home: React.FC<HomeProps> = ({ accordionSx }) => {
             faqsDivRef.current.scrollIntoView({ behavior: 'smooth' });
     }
 
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      };
+
     return (
         <div className='home-container'>
-            <Header whatWeOfferNav={handleNavToWhatWeOffer} packagesNav={handleNavToPackages} faqsNav={handleNavToFaqs} navBack={false}/>
-            <BackgroundImage src={bench} heading='Limit Breaker Strength' description='All inclusive powerlifting coaching'/>
-            <div ref={whatWeOfferDivRef} className="full-height large-padding-bottom">
-                <Paragraph text="Become the best and strongest version of yourself. Push the limits of known strength."/>
-                <Heading text="What we offer" />
-                <div className="offer-cards-container">
-                    <InfoCard heading='24/7 WhatsApp Support' src={faWhatsapp} alt='whatsapp'
-                            description='Direct communication with me on WhatsApp.'/>
-                    <InfoCard heading='Personalised Programs' src={faTableCells} alt='program'
-                            description='Programs personally crafted for your specific needs and goals.'/>
-                    <InfoCard heading='Periodical Check-ins' src={faClock} alt='video'
-                            description='Check-ins on a scheduled basis.'/>
+            <Header texts={texts} whatWeOfferNav={handleNavToWhatWeOffer} packagesNav={handleNavToPackages} faqsNav={handleNavToFaqs} navBack={false}/>
+            <BackgroundImage src={profile} texts={texts} description='Passionate and driven Software Developer with approximately 2 years of professional experience in designing, developing, and deploying software solutions. Currently pursuing an Honours degree in Computer Science, which has further honed my technical skills and deepened my understanding of advanced computing concepts. Adept at problem-solving, writing clean and efficient code, and collaborating effectively in team environments. Eager to leverage my education and hands-on experience to contribute to innovative projects and drive technological advancements.'/>
+            <div ref={whatWeOfferDivRef} className="container">
+                <Heading text="Skills" />
+                <div className="skills-container">
                 </div>
             </div>
-            <div className="large-padding-bottom black-background full-height">
-                <WhiteHeading text="Why choose us?"/>
-                <p className="white-color line-space medium-padding-left medium-padding-right medium-padding-bottom">We
-                    focus on the development of strong lifting technique and healthy eating habits. Lorem ipsum dolor
-                    sit amet consectetur adipisicing elit. Mollitia quas laudantium corrupti nisi. Voluptas perferendis,
-                    eveniet eaque debitis, pariatur a, alias fugiat sequi perspiciatis odio ipsum animi quam nisi
-                    eligendi.</p>
-            </div>
-            <div ref={packagesDivRef} className='medium-padding-bottom'>
-                <Heading text="Packages"/>
+            <div ref={packagesDivRef} className='container'>
+                <Heading text="Education"/>
                 {/* <div className="graphic-cards-container">
                     <GraphicCard heading="Online Coaching" description="Training and technique" src={bench}
                                 pageLink='coaching'/>
@@ -154,7 +134,6 @@ const Home: React.FC<HomeProps> = ({ accordionSx }) => {
                         )}
                 </div>
             </div>
-            <Footer/>
         </div>
     );
 };
