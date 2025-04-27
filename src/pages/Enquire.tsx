@@ -104,11 +104,42 @@ const Enquire: React.FC<any> = (props: any) => {
     const [messageError, setMessageError] = useState(false);
     const handleMessageChange = (e: any) => {
         setMessage(e.target.value);
-        setEmail(`mailto:bevanslabbert@gmail.com?body=${encodeURIComponent(e.target.value)}`)
+        // setEmail(`mailto:bevanslabbert@gmail.com?body=${encodeURIComponent(e.target.value)}`)
     };
 
-    const sendEmail = () => {
-        
+    const sendEmail = async () => {
+        // Make POST request to server
+        const url = process.env.REACT_APP_SERVER_URL || "";
+
+        // Log to vercel
+        console.log("Sending email to server...");
+        console.log("URL: ", url);
+        await fetch(`${process.env.REACT_APP_SERVER_URL}/email/send`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                // "Authorization": process.env.REACT_APP_API_KEY || ""
+            },
+            body: JSON.stringify({
+                from: email,
+                subject: `Enquiry from ${name} ${surname}`,
+                phone: phone,
+                text: message || "",
+            })
+        })
+        .then((response) => {
+            if (response.ok) {
+                alert("✅ Email sent successfully!");
+            } else if (response.status === 429) {
+                alert("⚠️ Don't worry, your email has been sent!");
+            } else {
+                alert("❌ Failed to send email.");
+            }
+        })
+        .catch((error) => {
+            console.error("Error sending email:", error);
+            alert("Failed to send email." + url);
+        });   
     }
 
     const [ref, inView] = useInView({ threshold: 0.1 });
@@ -125,15 +156,13 @@ const Enquire: React.FC<any> = (props: any) => {
                     <div className='enquire-card'>
                         <div className='enquire-form medium-padding-left medium-padding-right medium-padding-bottom'>
                             <p className="tickbox-card-heading">Contact Me</p>
-                            {/* <CustomTextField id="outlined-basic" value={name} onChange={handleNameChange} helperText={nameErrorText} error={nameError} autoFocus required label="Name" variant="outlined" inputProps={{style: {fontSize: "0.9rem"}}} sx={{ mb: "2rem"}} size="medium" fullWidth={true}/>
-                            <CustomTextField id="outlined-basic" value={surname} onChange={handleSurnameChange} helperText={surnameErrorText} error={surnameError} required label="Surname" variant="outlined" inputProps={{style: {fontSize: "0.9rem"}}} sx={{ mb: "2rem" }} size="medium" fullWidth={true}/> */}
-                            {/* <CustomTextField id="outlined-basic" value={email} onChange={handleEmailChange} helperText={emailErrorText} error={emailError} required label="Email" variant="outlined" inputProps={{style: {fontSize: "0.9rem"}}} sx={{ mb: "2rem" }} size="medium" fullWidth={true}/> */}
-                            {/* <CustomTextField id="outlined-basic" value={phone} onChange={handlePhoneChange} helperText={phoneErrorText} error={phoneError} required label="Phone Number" variant="outlined" inputProps={{style: {fontSize: "0.8rem"}}} sx={{ mb: "2rem" }} size="small" fullWidth={true}/> */}
-                            <CustomTextField id="outlined-basic" multiline rows={4} value={message} onChange={handleMessageChange} label="Message" variant="outlined" inputProps={{style: {fontSize: "1rem"}}} sx={{ mb: "0.9rem" }} size="medium" fullWidth={true}/>
+                            <CustomTextField id="outlined-basic" value={name} onChange={handleNameChange} helperText={nameErrorText} error={nameError} autoFocus required label="Name" variant="outlined" inputProps={{style: {fontSize: "0.9rem"}}} sx={{ mb: "2rem"}} size="medium" fullWidth={true}/>
+                            <CustomTextField id="outlined-basic" value={surname} onChange={handleSurnameChange} helperText={surnameErrorText} error={surnameError} required label="Surname" variant="outlined" inputProps={{style: {fontSize: "0.9rem"}}} sx={{ mb: "2rem" }} size="medium" fullWidth={true}/>
+                            <CustomTextField id="outlined-basic" value={email} onChange={handleEmailChange} helperText={emailErrorText} error={emailError} required label="Email" variant="outlined" inputProps={{style: {fontSize: "0.9rem"}}} sx={{ mb: "2rem" }} size="medium" fullWidth={true}/>
+                            <CustomTextField id="outlined-basic" value={phone} onChange={handlePhoneChange} helperText={phoneErrorText} error={phoneError} required label="Phone Number" variant="outlined" inputProps={{style: {fontSize: "0.9rem"}}} sx={{ mb: "2rem" }} size="medium" fullWidth={true}/>
+                            <CustomTextField id="outlined-basic" multiline rows={4} onChange={handleMessageChange} value={message} label="Message" variant="outlined" inputProps={{style: {fontSize: "1rem"}}} sx={{ mb: "0.9rem" }} size="medium" fullWidth={true}/>
                             <div className="medium-margin-top">
-                            <a href={email}>
                                 <ActionButton onPressFunction={sendEmail} text="Submit"/>
-                            </a>
                             </div>
                         </div>
                         <div className='enquire-card-info'>
