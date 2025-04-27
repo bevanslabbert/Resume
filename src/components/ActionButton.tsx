@@ -3,12 +3,13 @@ import '../styles/App.css';
 import { Button } from '@mui/material';
 
 interface ButtonProps {
-    text: string
+    text: string;
+    onPressFunction: any;
 }
 
 const ActionButton: React.FC<ButtonProps> = ( props : ButtonProps ) => {
     return (
-        <Button variant='contained' sx={
+        <Button onClick={props.onPressFunction} variant='contained' sx={
             {
                 backgroundColor: 'transparent',
                 color: "var(--secondary-color)",

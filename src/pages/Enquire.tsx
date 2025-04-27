@@ -100,11 +100,16 @@ const Enquire: React.FC<any> = (props: any) => {
         }
     };
 
-    const [message, setMessage] = useState(plan && packageType ? `Hey there! I am interested in the ${plan} ${packageType} package.` : `Hey there! I want to sign up!`);
+    const [message, setMessage] = useState("");
     const [messageError, setMessageError] = useState(false);
     const handleMessageChange = (e: any) => {
         setMessage(e.target.value);
+        setEmail(`mailto:bevanslabbert@gmail.com?body=${encodeURIComponent(e.target.value)}`)
     };
+
+    const sendEmail = () => {
+        
+    }
 
     const [ref, inView] = useInView({ threshold: 0.1 });
     return (
@@ -119,14 +124,16 @@ const Enquire: React.FC<any> = (props: any) => {
                 >
                     <div className='enquire-card'>
                         <div className='enquire-form medium-padding-left medium-padding-right medium-padding-bottom'>
-                            <p className="tickbox-card-heading">Sign Up</p>
-                            <CustomTextField id="outlined-basic" value={name} onChange={handleNameChange} helperText={nameErrorText} error={nameError} autoFocus required label="Name" variant="outlined" inputProps={{style: {fontSize: "0.9rem"}}} sx={{ mb: "2rem"}} size="medium" fullWidth={true}/>
-                            <CustomTextField id="outlined-basic" value={surname} onChange={handleSurnameChange} helperText={surnameErrorText} error={surnameError} required label="Surname" variant="outlined" inputProps={{style: {fontSize: "0.9rem"}}} sx={{ mb: "2rem" }} size="medium" fullWidth={true}/>
-                            <CustomTextField id="outlined-basic" value={email} onChange={handleEmailChange} helperText={emailErrorText} error={emailError} required label="Email" variant="outlined" inputProps={{style: {fontSize: "0.9rem"}}} sx={{ mb: "2rem" }} size="medium" fullWidth={true}/>
+                            <p className="tickbox-card-heading">Contact Me</p>
+                            {/* <CustomTextField id="outlined-basic" value={name} onChange={handleNameChange} helperText={nameErrorText} error={nameError} autoFocus required label="Name" variant="outlined" inputProps={{style: {fontSize: "0.9rem"}}} sx={{ mb: "2rem"}} size="medium" fullWidth={true}/>
+                            <CustomTextField id="outlined-basic" value={surname} onChange={handleSurnameChange} helperText={surnameErrorText} error={surnameError} required label="Surname" variant="outlined" inputProps={{style: {fontSize: "0.9rem"}}} sx={{ mb: "2rem" }} size="medium" fullWidth={true}/> */}
+                            {/* <CustomTextField id="outlined-basic" value={email} onChange={handleEmailChange} helperText={emailErrorText} error={emailError} required label="Email" variant="outlined" inputProps={{style: {fontSize: "0.9rem"}}} sx={{ mb: "2rem" }} size="medium" fullWidth={true}/> */}
                             {/* <CustomTextField id="outlined-basic" value={phone} onChange={handlePhoneChange} helperText={phoneErrorText} error={phoneError} required label="Phone Number" variant="outlined" inputProps={{style: {fontSize: "0.8rem"}}} sx={{ mb: "2rem" }} size="small" fullWidth={true}/> */}
                             <CustomTextField id="outlined-basic" multiline rows={4} value={message} onChange={handleMessageChange} label="Message" variant="outlined" inputProps={{style: {fontSize: "1rem"}}} sx={{ mb: "0.9rem" }} size="medium" fullWidth={true}/>
                             <div className="medium-margin-top">
-                                <ActionButton text="Submit" />
+                            <a href={email}>
+                                <ActionButton onPressFunction={sendEmail} text="Submit"/>
+                            </a>
                             </div>
                         </div>
                         <div className='enquire-card-info'>

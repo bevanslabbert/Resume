@@ -4,6 +4,7 @@ import useInView from '../hooks/useInView';
 import { motion } from "framer-motion"
 interface HeadingProps {
     text: string;
+    type?: string;
 }
 const Heading: React.FC<HeadingProps> = ( props : HeadingProps ) => {
     const [ref, inView] = useInView({ threshold: 0.1 });
@@ -15,9 +16,18 @@ const Heading: React.FC<HeadingProps> = ( props : HeadingProps ) => {
                 animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
                 transition={{ duration: 0.5 }}
             >
-                <div className="heading">
-                    <p>{props.text}</p>
-                </div>
+                {
+                    (props.type && props.type==="secondary") ? (
+                        <div className="secondary-heading">
+                            <p>{props.text}</p>
+                        </div>
+                    ) : (
+                        <div className="heading">
+                            <p>{props.text}</p>
+                        </div>
+                    )
+                }
+                
             </motion.div>
     );
 };

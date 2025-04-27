@@ -11,6 +11,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@mui/lab": "^5.0.0-alpha.173",
     "@mui/material": "^5.16.4",
     "@szhsin/react-menu": "^4.1.0",
     "@testing-library/jest-dom": "^5.17.0",
@@ -20,10 +21,13 @@
     "@types/node": "^16.18.101",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "@types/react-helmet": "^6.1.11",
     "@types/react-slick": "^0.23.13",
     "@vercel/speed-insights": "^1.0.12",
     "bootstrap": "^5.3.3",
     "framer-motion": "^11.2.13",
+    "fs": "^0.0.1-security",
+    "mailgun.js": "^12.0.1",
     "primereact": "^10.7.0",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.4",
@@ -34,8 +38,7 @@
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
     "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4",
-    "@types/react-helmet": "^6.1.11"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -60,7 +63,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
   }
 }

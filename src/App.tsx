@@ -12,10 +12,12 @@ import Enquire from './pages/Enquire';
 const theme = createTheme();
 
 const accordionSx = {
-  backgroundColor: 'black',
-  color: 'white',
+  backgroundColor: 'var(--tertiary-color)',
+  color: 'var(--background-color)',
   paddingBottom: '1rem',
   paddingTop: '1rem',
+  boxShadow: "none",
+  borderBottom: "none",
   transition: 'transform 0.2s ease-in-out',
   '&:hover': {
     transform: 'translateX(30px)',
@@ -40,10 +42,10 @@ function App() {
           <Routes>
             <Route>
               <Route path="/" element={<Home accordionSx={accordionSx}/>} />
-              <Route path="enquire" element={<Enquire />} />
-              <Route path="nutrition/enquire" element={<Enquire />} />
+              <Route path="contact-me" element={<Enquire />} />
+              {/* <Route path="nutrition/enquire" element={<Enquire />} />
               <Route path="coaching/enquire" element={<Enquire />} />
-              <Route path="coaching-and-nutrition/enquire" element={<Enquire />} />
+              <Route path="coaching-and-nutrition/enquire" element={<Enquire />} /> */}
               {/* <SpeedInsights /> */}
             </Route>
           </Routes>

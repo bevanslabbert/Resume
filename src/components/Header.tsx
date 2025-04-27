@@ -15,6 +15,7 @@ interface HeaderProps {
     packagesNav?: Function;
     faqsNav?: Function;
     texts?: string[];
+    skillsNav?: Function;
 }
 
 const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
@@ -60,7 +61,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
     };
 
     const handleSignUp = (event: any) => {
-        navigate("enquire", {replace: true});
+        navigate("contact-me", {replace: true});
     }
 
     const handleHome = (event: any) => {
@@ -191,13 +192,13 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
                     location.pathname !== "/" ? <Button sx={buttonSx} variant="text" onClick={handleHome}>Home</Button> : null
                 }
                 {
-                    location.pathname === "/" ?  <Button variant="text" sx={buttonSx} onClick={handleWhatWeOffer}>Skills</Button> : null
-                }
-                {
                     location.pathname === "/" ?  <Button variant="text" sx={buttonSx} onClick={handlePackages}>Education</Button> : null
                 }
                 {
-                    location.pathname === "/" ?   <Button variant="text" sx={buttonSx} onClick={handleFaqs}>Experience</Button> : null
+                    location.pathname === "/" ?  <Button variant="text" sx={buttonSx} onClick={handleWhatWeOffer}>Experience</Button> : null
+                }
+                {
+                    // location.pathname === "/" ?   <Button variant="text" sx={buttonSx} onClick={handleFaqs}>Skills</Button> : null
                 }
                
                 {/* <Link to={"enquire"} replace={true}> */}

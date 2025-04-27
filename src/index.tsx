@@ -13,7 +13,7 @@ root.render(
      <Helmet>
         <meta charSet="utf-8" />
         <meta name="keywords" content="strength, powerlifting, power, bench" />
-        <title>Limit Breaker Strength</title>
+        <title>Bevan Slabbert</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
     <App />
