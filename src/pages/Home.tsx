@@ -29,13 +29,26 @@ const experience = [
     },
     {
         job: "Technical Consultant",
-        date: "December 2023 - Current",
+        date: "December 2023 - August 2024",
         responsibilities: [
             "Independently developed custom full-stack applications for clients – SAP UI5 frontend, ExpressJs backend", 
             "Developed and deployed enhancements for developed applications to fulfill business requirements",
             "Developed new features for existing client applications",
             "Client meetings and discussions regarding flow and logical design of custom business solutions",
             "Collaboration on large project developed in SAP UI5 and ExpressJs version controlled using GitHub",
+        ]
+    },
+    {
+        job: "Automation Software Engineer",
+        date: "September 2024 - current",
+        responsibilities: [
+            "Built automation software for use with SAP EC and ECP",
+            "Developed and deployed enhancements for developed applications to fulfill business requirements",
+            "Designed architecture and flow of automation software integrating several different systems",
+            "Built custom APIs for integration with systems to facilitate data transfer and automation",
+            "Developed CI/CD pipelines in Github Actions for automated build, test and deployment of applications to AWS",
+            "Experience with AWS services such as Kubernetes, EC2, S3 and Lambda",
+            "Experience with UIPath, Ruby on Rails, Nest.JS and Python"
         ]
     }
 ]
@@ -53,12 +66,19 @@ const academicExperience = [
     },
     {
         job: "bsc hons. computer science",
-        date: "january 2023 - Current",
+        date: "january 2023 - december 2024",
         responsibilities: [
             "Neural network configuration, training, testing and result reporting. Parameter-optimization and cloud-computing to yield results", 
             "Designed and developed a fully functional genetic algorithm - enhancements to the base genetic programming model included structure based genetic programming features and grammatical evolution", 
             "Use of convolutional neural network libraries for image recognition",
-            "Research is centered around interpolating unit detection of self organizing maps - developed a self-organizing map library in python to interact with individual neurons and calculate inter-neuron distances. Proposal of own algorithm for interpolating unit classification and identification",
+            "Research was centered around interpolating unit detection of self organizing maps. Proposal of own algorithm for interpolating unit classification and identification",
+        ]
+    },
+    {
+        job: "msc. computer science",
+        date: "january 2025 - current",
+        responsibilities: [
+            "Researching and developing a novel neural network architecture for the purpose of image synthesis and generation in the field of radio astronomy"
         ]
     }
 ]

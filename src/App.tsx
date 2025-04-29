@@ -3,6 +3,7 @@ import './styles/App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Analytics } from "@vercel/analytics/react"
 
 // Pages
 import Home from './pages/Home'
@@ -37,6 +38,7 @@ function App() {
 
   return (
     <div className="App">
+      <Analytics/>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <Routes>
